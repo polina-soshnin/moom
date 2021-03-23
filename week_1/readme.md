@@ -71,5 +71,33 @@ Barewords
 
 What does it mean to send a Message?
 
-- 
+- Alan Kay on [Messaging and Smalltalk](http://wiki.c2.com/?AlanKayOnMessaging)
+
+> The key in making great and growable systems is much more to design how its modules communicate rather than what their internal properties and behaviors should be.
+
+What makes for a good message definition in object-oriented code?
+
+- Only the recipient of the message should decide what to do with it (it is late bound). Contrast this with a statically typed compiled language like C++ where object methods are early bound and very procedural.  
+  - Javascript (which is dynamic) call also be treated procedurally.
+
+```
+var do_thing = object.do_thing
+... later ...
+do_thing()
+```
+
+- One of the possible outcomes of handling a message is for it to do nothing (no-op).
+- One-way messages (Actor Model messaging)
+  - In Erlang/Elixir, we have this concept. In other languages there is a heavy reliance on call-and-return functions.
+  - Article on [east oriented code](https://www.saturnflyer.com/blog/the-4-rules-of-east-oriented-code-rule-1)
+- Messages are important because they introduce space between objects. That space isn't real if the information inside the messages require objects to have a deep understanding of other objects.
+  - You want to commoditize your messages for easy interchange.
+
+Why do we care about this? Because early binding to a fixed method implementation can lead to bugs in our program.
+
+Methods vs Messages
+
+- Methods are not first class objects in Ruby (as opposed to Python or Javascript) because Ruby is purely object oriented.
+- There is a difference between calling a method and sending a message.
+- When our code saved a direct reference to a method and then called it later, it missed out on any changes to that method which occurred between when the reference was saved and when the method was executed.
 
