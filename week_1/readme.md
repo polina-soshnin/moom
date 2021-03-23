@@ -1,4 +1,5 @@
 Week 1
+
 March 29 2021
 
 What does it mean to be object-oriented?
@@ -44,7 +45,7 @@ exports.build = series(transpile_my_javascripts, bundle_my_css);
 
 ```
 
-- Whereas with Webpack, you take a declarative approach. You tell Webpack what end state you want and it will get you there. 
+- Whereas with [Webpack](https://webpack.js.org/), you take a declarative approach. You tell Webpack what end state you want and it will get you there. 
 
 ```javascript
 // webpack.config.js
@@ -60,3 +61,15 @@ module.exports = {
 };
 
 ```
+
+Barewords
+
+- Moving variables to different scopes. Static/hardcoded values become: gobal/method arguments, property of a single instance (instance var), member of a composited object, property of the class (constant), constant in program wide module namespace.
+- At every step we changed the scope of the named value and changed the greeting code (method interface) but underlying logic did not change.
+- How can we change the source of the values used without modifying the greeting code? This is the goal because it shouldn't care what the new source of the values are.
+- In Perl/Ruby, a bareword may look like a value and end up a named method. Is there any reason not to refer to a bareword instead of a constant? It makes it easier to move between variable scopes more easily.
+
+What does it mean to send a Message?
+
+- 
+
