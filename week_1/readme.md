@@ -165,4 +165,5 @@ Why do we care about this? Because early binding to a fixed method implementatio
   - [Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software-ebook/dp/B00794TAUG/ref=mt_kindle?_encoding=UTF8&me=). Note this book is a little dry and verbose. It's going to be a slog but it's a valuable slog.
 - East Oriented Code
   - Forms as active objects. They're not passive objects.
+  - [Object Thinking by David West](https://www.amazon.com/Object-Thinking-Developer-Reference-David-ebook/dp/B00JDMPOKM/)
 
