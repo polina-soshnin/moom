@@ -164,5 +164,5 @@ Why do we care about this? Because early binding to a fixed method implementatio
   - Domain Drive Design is about finding the names for things that aren't obvious at first. Data model != domain model. It's easy to get started in Rails assuming they're the same thing because AR trains you into doing that. But remember that you're allowed to use plain old Ruby Objects and controllers that don't point to a model yet. These are all important for naming your domain concept.
   - [Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software-ebook/dp/B00794TAUG/ref=mt_kindle?_encoding=UTF8&me=). Note this book is a little dry and verbose. It's going to be a slog but it's a valuable slog.
 - East Oriented Code
-  - 
+  - Forms as active objects. They're not passive objects.
 
