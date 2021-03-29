@@ -126,3 +126,43 @@ Why do we care about this? Because early binding to a fixed method implementatio
   - Team maturity and team coherence
   - [Presenter](http://blog.jayfields.com/2007/03/rails-presenter-pattern.html), [Interactor](https://github.com/collectiveidea/interactor) and [Decorator](https://www.rubytapas.com/2014/04/25/episode-197-decorator/#tapas__decorator) Patterns
   - Use a [process](https://www.rubytapas.com/references/process-object-pattern/) object
+
+### Q&A with Betsy Haibel
+
+- Plain old ruby objects and Rails.
+- OMG my tests are so slow. I'm going to stub everything.
+- Your Rails objects and your domain objects are solving different problems. 
+  - Early on, I wouldn't care too much about that. You don't have enough tests for it to be annoying.
+  - Think about separating your business logic from Rails and make poros.
+  - It's a balancing act, but the goal should be productivity.
+  - When you make that clean separation, 
+  - PORO: In the context of Ruby on Rails, it's not an object that does not inherit from Active Record.
+  - Be careful to have POROs that rely on AR save cycles, session objects from controllers, objects that highly couple but does not inherit from a Rails core class.
+  - E.g. If you pass in a user collection to a class and you use the entire AR API in this context, then go to town. You set that example by coupling to your class. Your tests running slow is a side effect of that. But the main thing to consider is you run into maintenance headaches down the road.
+  - What about service objects whose job is to act on AR objects?
+  - If your object is saying `.where(sql)` to specify which users it wants to pull out, that is something that is very bound to AR.
+- How far away you can move away from standard Rails practices and it still be Rails?
+  - You can surprise folks who are coming in and expecting a more vanilla Rails application.
+  - You're going to have a hard time if you deviate from Rails norms and you don't all agree on an idiom that folks are not familiar with.
+  - The idea of having a lot of tiny decorator and presenter and interactor objects. Interactor pattern is poorly defined.
+  - Whether the pattern is vanilla Rails or not is a red herring. At what point is abstraction premature and at what point is it a good idea? You can both abstract too early and too late.
+  - Answer: you want to do a lot of code review and agree on what is healthiest.
+- The Difficulty of following the execution path with lots and lots of little objects. The running joke is "everything happens somewhere else in a smalltalk application".
+  - One of the issues where 1 workflow gets broken down into lots of little service objects. The stories are being told through hops.
+  - Objects representing processes should help us there.
+- Service objects, serializers and objects that call long chains of methods off of Active Record God objects
+  - One of the ways of internalizing rules of object orientation: the law of demeter isn't there to get in your way and make or pretty test suites. The law of demeter is there to provide a guideline for this problem. 
+  - "shove it under the rug" refactoring is an example where you move lines out of AR model and put it into a concern / another place that is not here. Giving things a name and not moving them is not nothing, but if you're not looking at the structure of what you're creating, you end up with this. You end up not understanding the boundaries you're creating. The goal is to consolidate to objects that have a non-trivial purpose.
+  - If you know exactly what you need you can tighten the scope and you don't need to chain things in.
+  - Classes should not end in "or". They typically do not represent a domain object.
+  - The object should represent something understandable in my domain.
+  - Objects are terrible for modeling things in the real world or things that we don't agree on. But we all agree that a "streak" is a thing.
+  - Naming a thing and moving it: Avdi is a fan of naming a thing and not moving it.
+  - Naming it and letting it stay there is a good middle ground if you don't know where it should be moved. You don't need to immediately move it.
+  - It's better to have a waiting period to let it percolate.
+  - We're identifying domain concepts here. It's a domain concept at the application level and UI level.
+  - Domain Drive Design is about finding the names for things that aren't obvious at first. Data model != domain model. It's easy to get started in Rails assuming they're the same thing because AR trains you into doing that. But remember that you're allowed to use plain old Ruby Objects and controllers that don't point to a model yet. These are all important for naming your domain concept.
+  - [Domain-Driven Design: Tackling Complexity in the Heart of Software](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software-ebook/dp/B00794TAUG/ref=mt_kindle?_encoding=UTF8&me=). Note this book is a little dry and verbose. It's going to be a slog but it's a valuable slog.
+- East Oriented Code
+  - 
+
