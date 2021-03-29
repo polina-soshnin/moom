@@ -119,4 +119,10 @@ Why do we care about this? Because early binding to a fixed method implementatio
   - Basic unit of computation == a whole computer. People who liked objects as "non data" were involved in the Arpanet/internet. The opposers tried to get by with RPC (remote procedure calls).
 - [History of Smalltalk](http://worrydream.com/EarlyHistoryOfSmalltalk/)
 
+### Capacitor session notes
 
+- Remote pairing setup in the cloud. +1 to that.
+- How far away can you move from Rails practices and it still be Rails?
+  - Team maturity and team coherence
+  - [Presenter](http://blog.jayfields.com/2007/03/rails-presenter-pattern.html), [Interactor](https://github.com/collectiveidea/interactor) and [Decorator](https://www.rubytapas.com/2014/04/25/episode-197-decorator/#tapas__decorator) Patterns
+  - Use a [process](https://www.rubytapas.com/references/process-object-pattern/) object
