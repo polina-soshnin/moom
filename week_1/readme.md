@@ -2,7 +2,7 @@ Week 1
 
 March 29 2021
 
-What does it mean to be object-oriented?
+### What does it mean to be object-oriented?
 
 Goal: think in objects. Spend time noticing the little stories in the interactions that our code implements. The stories of the workflows that our users go through. When we see a story, no matter how small it is, we can give it a name. And that name can become an object.
 
@@ -62,7 +62,7 @@ module.exports = {
 
 ```
 
-Barewords
+### Barewords
 
 - Moving variables to different scopes. Static/hardcoded values become: gobal/method arguments, property of a single instance (instance var), member of a composited object, property of the class (constant), constant in program wide module namespace.
 - At every step we changed the scope of the named value and changed the greeting code (method interface) but underlying logic did not change.
@@ -95,9 +95,28 @@ do_thing()
 
 Why do we care about this? Because early binding to a fixed method implementation can lead to bugs in our program.
 
-Methods vs Messages
+### Methods vs Messages
 
 - Methods are not first class objects in Ruby (as opposed to Python or Javascript) because Ruby is purely object oriented.
 - There is a difference between calling a method and sending a message.
 - When our code saved a direct reference to a method and then called it later, it missed out on any changes to that method which occurred between when the reference was saved and when the method was executed.
+- Message = responsibility that an object may have
+- Method = named, concrete piece of code that encodes one way a responsibility may be fulfilled.
+- Message = layer of indirection on top of methods
+- Method references can be in danger of going stale
+- The goal is to pass messages between classes with no assumptions as to how those messages are to be handled.
+- Ruby adheres to this guiding principle, so if you're wondering why ruby doesn't pass method references around more often, now you know.
+
+### History of OOP
+
+- [Dr. Alan Kay on the Meaning of “Object-Oriented Programming”](http://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en)
+  - I thought of objects being like biological cells and/or individual computers on a network, only able to communicate with messages.
+  - I wanted to get rid of data.
+  - The second phase of this was to finally understand LISP and then using this understanding to make much nicer and smaller and more powerful and more late bound understructures.
+  - OOP to me means only messaging, local retention and protection and hiding of state-process, and extreme late-binding of all things. It can be done in Smalltalk and in LISP. There are possibly other systems in which this is possible, but I'm not aware of them.
+  - Cheers, Alan
+- "Dataless Programming"
+  - Basic unit of computation == a whole computer. People who liked objects as "non data" were involved in the Arpanet/internet. The opposers tried to get by with RPC (remote procedure calls).
+- [History of Smalltalk](http://worrydream.com/EarlyHistoryOfSmalltalk/)
+
 
