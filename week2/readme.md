@@ -72,3 +72,83 @@ Capacitor Session notes:
 - You cannot have a coherent object model without a coherent product specification.
 - "What is the minimum amount I can write to describe this feature?"
 
+### Parallel Heirarchy code smell
+
+- Problem: there is a lot of metadata associated with a new product and it's spread around everywhere.
+- E.g. a list of validation errors that are parallel to the list of fields in an input form.
+- Conversion functions should be idempotent.
+
+> This is one of the more obnoxious antipatterns in user experience design. When a form asks me to edit my submission, I want to see my original entries echoed back to me.
+
+- Parallel heirarchies introduce new kinds of coupling into our code.
+- The red flag is that we're forcing the model object to manage information on behalf of its collaborators.
+- How to eliminate: use the Exceptional Value pattern
+
+### Exceptional Values
+
+- In some cases we replace an exception with a nil return.
+- However, we know nil is a semantically impoverished type and it forces us to push more responsibilties onto the containing model object.
+
+Before:
+
+```ruby
+def Duration(raw_value)
+  case raw_value
+  when Duration
+    raw_value
+ when /A(d+)s+monthsz/i
+    Months[$1.to_i]
+  when /A(d+)s+weeksz/i
+    Weeks[$1.to_i]
+  when /A(d+)s+daysz/i
+    Days[$1.to_i]
+  else
+    nil # or raising here
+  end
+end
+```
+
+After:
+
+```ruby
+def Duration(raw_value)
+  case raw_value
+  when Duration
+    raw_value
+  when /A(d+)s+monthsz/i
+    Months[$1.to_i]
+  when /A(d+)s+weeksz/i
+    Weeks[$1.to_i]
+  when /A(d+)s+daysz/i
+    Days[$1.to_i]
+  else
+    ExceptionalValue.new(raw_value, reason: "Unrecognized format")
+  end
+end
+```
+
+Example course model:
+
+When to use a struct and when to use a class? 🤔
+
+```ruby
+Course = Struct.new(:name, :duration) do
+  def duration=(new_duration)
+    self[:duration] = new_duration
+  end
+end
+
+class Course
+  attr_accessor :name, :duration
+  def initialize(name, duration)
+    self.name = name
+    self.duration = duration
+  end
+end
+
+c = Course.new("hello",2)
+c.duration # => 2
+c.duration = 3
+c.duration # => 3
+```
+
