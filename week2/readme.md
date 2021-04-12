@@ -152,3 +152,13 @@ c.duration = 3
 c.duration # => 3
 ```
 
+### RubyConf 2015 talk:
+Overcoming Our Obsessions with Stringly-Typed Ruby
+
+- https://youtu.be/7Obobjq8g_U
+- https://blog.codinghorror.com/new-programming-jargon/
+- A Riff on "strongly typed"
+- We use strings all the time. Databases and Rails love strings. But it can get us into trouble.
+- E.g. A tale of two codes.
+- 
+
