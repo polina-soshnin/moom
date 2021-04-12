@@ -152,7 +152,7 @@ c.duration = 3
 c.duration # => 3
 ```
 
-### RubyConf 2015 talk:
+### RubyConf 2014 talk:
 Overcoming Our Obsessions with Stringly-Typed Ruby
 
 - https://youtu.be/7Obobjq8g_U
@@ -160,5 +160,19 @@ Overcoming Our Obsessions with Stringly-Typed Ruby
 - A Riff on "strongly typed"
 - We use strings all the time. Databases and Rails love strings. But it can get us into trouble.
 - E.g. A tale of two codes.
-- 
+- "every time you add a new thing, you have to add a check to make sure it's a correct zipcode, you don't want this"
+- Boundary: what's coming and going. What am I supposed to pass in? What am I not supposed to get out?
+  - It's really hard to use this method and know what it does if it can pass and return anything.
+  - We use strings and hashes everywhere! APIs want json objects. AR wants hashes.
+- You don't tend to create systems in Java based on Strings and Hashes. You have to create special purpose objects for everything up front.
+- In Ruby, you can start exploring the designs of the system and push around Strings and Hashes before you figure out what domain you should be modeling. But you shouldn't leave it in that state.
+- Data types: 
+  - Possible values: Think about the possible values of your data type
+  - Allowed operations: of the data type
+  - Meanings of those values: Let you assign richer meaning to a possible value
+  - If you've done the above, then congratulations! You've created good boundaries between your data and other parts of the system.
+  -  Intention is encoded in our code.
+
+
+
 
