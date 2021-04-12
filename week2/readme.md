@@ -172,6 +172,12 @@ Overcoming Our Obsessions with Stringly-Typed Ruby
   - Meanings of those values: Let you assign richer meaning to a possible value
   - If you've done the above, then congratulations! You've created good boundaries between your data and other parts of the system.
   -  Intention is encoded in our code.
+  -  This is part of the design process. 
+  -  What problem am I solving?
+  -  Push code around to solve it.
+  -  Define boundaries using data types.
+  - How do you publicize these boundaries? This is tricky in Ruby bc there aren't types.
+  - We can circumvent the lack of types by following convention.
 
 
 
