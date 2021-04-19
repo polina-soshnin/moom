@@ -1,4 +1,4 @@
-### Representing User Input, Continued
+## Representing User Input, Continued
 
 > The String is the perfect vehicle for hiding information
 
@@ -13,3 +13,33 @@
 
 Food for thought: Think about properties of blank forms you’ve seen on web pages, or on paper in the physical world. Are the fields really “nil”? Or do they have extra information associated with them, explicitly or implicitly? Now that we are representing blanks as objects in their own right, can you think of any blank-field metadata we could move from the model object or the presentation helpers, into the blank object itself?
 
+## Whole Values in Rails
+
+- Whole Values comes from Ward Cunningham’s CHECKS pattern language.
+- Justin Weiss, guest Rails expert. Writes Practicing Rails https://www.justinweiss.com/practicing-rails/
+- How to augment Rails models with the Whole Value Pattern and Exceptional Value
+- How should it mesh with the existing validations that Rails has?
+- The key is to tell Rails how to translate our Whole Value types into something it can save.
+
+```ruby
+class DurationType < ActiveModel::Type::Value
+  # takes raw value (from database or user input)
+  # and turns it into a Whole Value object
+  def cast(value)
+    Duration(value)
+  end
+  # takes Whole Value object and turns it into 
+  # raw value for the data base or view layer
+  # e.g. this could be called before Rails saves an object
+  # into the database.
+  def serialize(value)
+    value.to_s
+  end
+end
+
+class Course < ApplicationRecord
+  attribute :duration, DurationType.new
+  ...
+end
+
+```
