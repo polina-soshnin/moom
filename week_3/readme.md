@@ -121,6 +121,10 @@ This is what it means to do Object Oriented Design. ✨ 💖
 
 - https://www.youtube.com/watch?v=FDs-sSxo2iY&feature=youtu.be&ab_channel=Codegram
 - Object-Oriented vs. Functional programming paradigm
-- 
+- Use blocks to delay execution.
+- Pure OO Numbers --> Lambda calculus
+- Remember, these are just tools to solve a problem, not systematic rules.
+- Worst kind of idiot (refers to trump lol)
+- The beauty of programming is you follow a few simple rules and endless possibilities follow.
 
 
