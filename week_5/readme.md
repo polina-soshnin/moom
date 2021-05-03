@@ -87,4 +87,9 @@ Why?
 
 > we're treating this module of transaction scripts as a staging area for logic that hasn't found its true home yet. In a way, we've de-factored our application a little bit, in preparation for a better, future organization of code.
 
+- "we don't need to give them the dignity of their own class level methods" 🤔
+- de-factored: remove vestiges of the original organization to give us a vantage point to figure out where to go from here.
+
+
+
 
