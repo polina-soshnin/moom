@@ -85,4 +85,38 @@ Next time you have a tough object modeling exercise, ask yourself:
 - Can I solve this be identifying an implicit process and embodying itself as an object?
 - 
 
+## Disposable Objects
 
+- You’ll see how building shorter-lived “disposable” objects can mitigate many of the mutable-state pain points, while staying with the “grain” of the language.
+- side effects + mutable state may not be idempotent
+- Because of this flaw we should use immutable data structures.
+- Avdi's 2 cents: In my experience, we can often get 80% of the benefits of immutability not by removing all changeable state, but by minimizing the lifetime of stateful objects. Another way of saying this is to embrace disposable objects.
+- Use smaller, single purpose objects.
+- Fighting bugs by accumulated state: discard state and have very short lived state
+
+
+Before
+
+```
+@notifier = EmailNotifier.new
+@notifier.send_receipt(current_user, @order)
+@notifier.send_related_products(current_user, @order)
+```
+
+After
+
+```
+ReceiptNotification.new(current_user, order: @order).proceed
+RelatedProductsNotification.new(current_user, order: @order).proceed
+```
+
+## FP vs OOP
+
+- LISP was a major influence on Smalltalk.
+- OOP is really a way of getting a handle on one of the thorniest problems in programming, functional or otherwise: the problem of time.
+- https://www.quora.com/Why-is-functional-programming-seen-as-the-opposite-of-OOP-rather-than-an-addition-to-it/answer/Alan-Kay-11
+- More main stream is that big data systems used *versions* instead of overwriting, and “atomic transactions” to avoid race conditions.
+
+Justin Weiss Q and A:
+
+- 
