@@ -119,4 +119,17 @@ RelatedProductsNotification.new(current_user, order: @order).proceed
 
 Justin Weiss Q and A:
 
-- 
+State Machines vs Workflows:
+
+- A State Machine holds the state of your model.
+- In order to apply a transition, workflows require that the object is in all the previous places of the transition, whereas state machines only require that the object is at least in one of those places.
+- Process State vs Object state
+- What makes a process: starting conditions, sequence of steps, dependencies between steps, current process state
+- Antipattern: business object bloated with process knowledge (hidden process objects)
+- Process state disguised as object state
+- Identify and eliminate process state disguised as object state 
+- It's suspicous when an object describes what someone is doing or what should happen next.
+- Design business objects for reuse.
+- Raising events instead of starting processes directly is a form of loose coupling.
+- Write an event handler instead
+
