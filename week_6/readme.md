@@ -133,3 +133,9 @@ State Machines vs Workflows:
 - Raising events instead of starting processes directly is a form of loose coupling.
 - Write an event handler instead
 
+Discussion Questions:
+- Processes != Transactions
+- How do you handle concurrency if you don't think of it as a transaction?
+- OOP and FP are similar bc both are trying to avoid changing too much state.
+- 
+- 
